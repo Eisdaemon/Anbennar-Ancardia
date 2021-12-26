@@ -1,0 +1,34 @@
+ancardia_corin_with_us = {
+	potential = {
+		tag = B35
+	}
+	trigger = {
+		religion = corinite
+		OR = {
+			hre_leagues_enabled = yes
+			hre_religion = corinite
+		}
+	at_war_with_religious_enemy = yes
+	}
+	land_morale = 0.1
+}
+
+ancardia_foreign_officiers = {
+	potential = {
+		tag = B35
+		has_country_flag = ancardia_foreign_officiers
+	}
+	trigger = {
+		any_rival_country = {
+			AND = {
+				war_with = ROOT
+				has_spy_network_from = {
+					who = ROOT
+					value = 60
+				}
+			}
+		}
+	}
+	movement_speed = 0.1
+	siege_ability = 0.1
+}

@@ -1,0 +1,23 @@
+estate_nobles_ancarida_officiers = {
+	icon = privilege_grant_autonomy
+	loyalty = 0.05
+	influence = 0.05
+	can_select = {
+		has_country_flag = ancaria_sent_officiers_abroad
+	}
+	on_granted = {
+		set_country_flag = ancardia_foreign_officiers
+	}
+	on_revoked = {
+		clr_country_flag = ancardia_foreign_officiers
+	}
+	penalties = {
+		global_tax_income = -0.05
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 5
+		
+	}
+}

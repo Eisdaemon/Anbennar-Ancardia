@@ -1,0 +1,885 @@
+
+
+namespace = flavor_ancardia
+
+#Dynasty Naming
+country_event = {
+	id = flavor_ancardia.1
+	title = dynasty_setup.1.t
+	desc = dynasty_setup.1.d
+	picture = {
+		trigger = {
+			NOT = { has_dlc = "Rights of Man" }
+		}
+		picture = COURT_eventPicture
+	}
+	picture = {
+		trigger = {
+			has_dlc = "Rights of Man"
+		}
+		picture = ROYAL_COUPLE_FUTURE_eventPicture
+	}
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = B35
+	}
+	
+	#New Dynasty Name after country
+	option = {		
+		name = "flavor_ancardia.1.a"
+		ai_chance = { factor = 65 }	
+		define_heir = {
+			dynasty = "síl Ancard"
+			age = 16
+			male = yes
+			change_adm = 1
+			change_dip = 1
+			change_mil = 1
+			hide_skills = yes
+		}
+	}
+	
+	#Maybe another option
+	option = {		
+		name = "flavor_ancardia.1.b"
+		ai_chance = { factor = 30 }	
+		define_heir = {
+			dynasty = "sína Trás"	#of the crossing
+			age = 16
+			male = yes
+			change_adm = 1
+			change_dip = 1
+			change_mil = 1
+			hide_skills = yes
+		}
+	}
+	
+	#Keep their name
+	option = {		
+		name = "flavor_ancardia.1.c"
+		ai_chance = { factor = 5 }	
+		define_heir = {
+			dynasty = ROOT
+			age = 16
+			male = yes
+			change_adm = 1
+			change_dip = 1
+			change_mil = 1
+			hide_skills = yes
+		}
+	}
+}
+
+#Make Ancardia Military Dictatorship
+country_event = {
+	id = flavor_ancardia.2
+	title = flavor_ancardia.2.t
+	desc = flavor_ancardia.2.d
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		tag = B35
+	}
+	option = {
+		name = "flavor_ancardia.2.a"
+		change_government = republic
+		add_government_reform = military_dictatorship_reform
+		add_republican_tradition = 25
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.3
+	title = flavor_ancardia.3.t
+	desc = flavor_ancardia.3.d
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		tag = B35
+	}
+	option = {
+		name = "flavor_ancardia.3.a"
+		add_republican_tradition = 2
+		add_war_exhaustion = -1
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.4
+	title = flavor_ancardia.4.t
+	desc = flavor_ancardia.4.d
+	is_triggered_only = yes
+	hidden = yes
+	trigger = {
+		tag = B35
+	}
+	option = {
+		name = "flavor_ancardia.4.a"
+		add_republican_tradition = -2
+		add_war_exhaustion = 1
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.5
+	title = flavor_ancardia.5.t
+	desc = flavor_ancardia.5.d
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = "flavor_ancardia.5.a"
+		every_owned_province = {
+			limit = {
+				NOT = { has_province_modifier = ancardia_military_adminstration }
+				has_manpower_building_trigger = yes
+				has_fort_building_trigger = yes
+				has_forcelimit_building_trigger = yes
+				base_manpower = 10
+			}
+			add_province_modifier = {
+				name = "ancardia_military_adminstration"
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.6
+	title = flavor_ancardia.6.t
+	desc = flavor_ancardia.6.d
+	is_triggered_only = yes
+	hidden = yes
+	option = {
+		name = "flavor_ancardia.6.a"
+		every_owned_province = {
+			limit = {
+				AND = {
+					has_province_modifier = ancardia_military_adminstration
+					NOT = {
+						AND = {
+							has_manpower_building_trigger = yes
+							has_fort_building_trigger = yes
+							has_forcelimit_building_trigger = yes
+							base_manpower = 10
+						}
+					}
+				}
+			}
+			remove_province_modifier = ancardia_military_adminstration
+		}
+	}
+}
+
+#Ancardi War Academy
+
+country_event = {
+	id = flavor_ancardia.7
+	title = flavor_ancardia.7.t
+	desc = flavor_ancardia.7.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.7.a"
+		random_owned_province = {
+			limit = {
+				is_capital = yes
+			}
+			add_permanent_province_modifier = {
+				name = ancardia_officier_corp
+				duration = -1
+			}
+		}
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.8
+	title = flavor_ancardia.8.t
+	desc = flavor_ancardia.8.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.8.a"
+		random_owned_province = {
+			limit = {
+				has_province_modifier = ancardia_officier_corp
+			}
+			add_permanent_province_modifier = {
+				name = ancardia_library_of_victories
+				duration = -1
+			}
+			remove_province_modifier = ancardia_officier_corp
+		}
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.9
+	title = flavor_ancardia.9.t
+	desc = flavor_ancardia.9.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.9.a"
+		random_owned_province = {
+			limit = {
+				has_province_modifier = ancardia_library_of_victories
+			}
+			add_permanent_province_modifier = {
+				name = ancardia_school_of_war
+				duration = -1
+			}
+			remove_province_modifier = ancardia_library_of_victories
+		}
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.10
+	title = flavor_ancardia.10.t
+	desc = flavor_ancardia.10.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.10.a"
+		random_owned_province = {
+			limit = {
+				has_province_modifier = ancardia_school_of_war
+			}
+			add_permanent_province_modifier = {
+				name = ancardia_academy_of_war
+				duration = -1
+			}
+			remove_province_modifier = ancardia_school_of_war
+		}
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.11
+	title = flavor_ancardia.11.t
+	desc = flavor_ancardia.11.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.11.a"
+		set_country_flag = ancaria_sent_officiers_abroad
+	}
+}
+
+country_event = {
+	id = flavor_ancardia.12
+	title = flavor_ancardia.12.t
+	desc = flavor_ancardia.12.d
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.12.a"
+		random_owned_province = {
+			limit = {
+				has_province_modifier = ancardia_academy_of_war
+			}
+			add_permanent_province_modifier = {
+				name = ancardia_escanni_academy_of_war
+				duration = -1
+			}
+			remove_province_modifier = ancardia_academy_of_war
+		}
+	}
+}
+
+#Vassal Modifiers
+#Silverforge
+country_event = {
+	id = flavor_ancardia.13
+	title = flavor_ancardia.13.t
+	desc = flavor_ancradia.13.d
+	fire_only_once = yes
+	trigger = {
+		always = no
+		OR = {
+			AND = {
+				is_great_power = yes
+				alliance_with = A73
+				trust = { who = A79 value = 80 }
+			}
+			AND = {
+				NOT = { exists = A73}
+				owns_core_province = 912
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.13.a"
+		trigger = { 
+				NOT = { exists = A73}
+		}
+		release = A73
+		vassalize = A73
+		add_country_modifier = {
+			name = ancardia_silverforge_boni_full
+			duration = -1
+		}
+	}
+	option = {
+		name = "flavor_ancardia.13.b"
+		trigger = { 
+			exists = A73
+		}
+		vassalize = A73
+		add_country_modifier = {
+			name = ancardia_silverforge_boni_full
+			duration = -1
+		}
+	}
+}
+
+#Annex Silverforge
+
+country_event = {
+	id = flavor_ancardia.14
+	title = flavor_ancardia.14.t
+	desc = flavor_ancradia.14.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_silverforge_boni_full
+		NOT = { exists = A73}
+	}
+	option = {
+		name = "flavor_ancardia.14.a"
+		add_country_modifier = {
+			name = ancardia_silverforge_boni_annexed
+			duration = -1
+		}
+		remove_country_modifier = ancardia_silverforge_boni_full
+	}
+}
+
+#Restore Silverforge as Vassal
+
+country_event = {
+	id = flavor_ancardia.15
+	title = flavor_ancardia.15.t
+	desc = flavor_ancradia.15.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_silverforge_boni_annexed
+		exists = A73
+		A73 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.15.a"
+		add_country_modifier = {
+			name = ancardia_silverforge_boni_full
+			duration = -1
+		}
+		remove_country_modifier = ancardia_silverforge_boni_annexed
+	}
+}
+
+#Giberd
+
+country_event = {
+	id = flavor_ancardia.16
+	title = flavor_ancardia.16.t
+	desc = flavor_ancradia.16.d
+	fire_only_once = yes
+	trigger = {
+		always = no
+		OR = {
+			AND = {
+				num_of_units_in_province = {
+					who = A81
+					amount = 30
+				}
+				alliance_with = A81
+				army_size = emperor
+			}
+			AND = {
+				NOT = { exists = A81}
+				owns_core_province = 271
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.16.a"
+		trigger = { 
+				NOT = { exists = A81}
+		}
+		mission_reward_artifice_points_2 = yes
+		release = A81
+		vassalize = A81
+		add_country_modifier = {
+			name = ancardia_giberd_boni_full
+			duration = -1
+		}
+	}
+	option = {
+		name = "flavor_ancardia.16.b"
+		trigger = { 
+			exists = A81
+		}
+		vassalize = A81
+		mission_reward_artifice_points_2 = yes
+		add_country_modifier = {
+			name = ancardia_giberd_boni_full
+			duration = -1
+		}
+	}
+}
+
+#Annex Giberd
+
+country_event = {
+	id = flavor_ancardia.17
+	title = flavor_ancardia.17.t
+	desc = flavor_ancradia.17.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_giberd_boni_full
+		NOT = { exists = A81}
+	}
+	option = {
+		name = "flavor_ancardia.17.a"
+		add_country_modifier = {
+			name = ancardia_giberd_boni_annexed
+			duration = -1
+		}
+		remove_country_modifier = ancardia_giberd_boni_full
+	}
+}
+
+#Restore Giberd as Vassal
+
+country_event = {
+	id = flavor_ancardia.18
+	title = flavor_ancardia.18.t
+	desc = flavor_ancradia.18.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_giberd_boni_annexed
+		exists = A81
+		A81 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.18.a"
+		add_country_modifier = {
+			name = ancardia_giberd_boni_full
+			duration = -1
+		}
+		remove_country_modifier = ancardia_giberd_boni_annexed
+	}
+}
+
+#Failed Protection
+country_event = {
+	id = flavor_ancardia.19
+	title = flavor_ancardia.19.t
+	desc = flavor_ancradia.19.d
+
+	is_triggered_only = yes
+	option = {
+		name = "flavor_ancardia.19.a"
+		add_liberty_desire = 50
+	}
+}
+
+
+#Konwell
+country_event = {
+	id = flavor_ancardia.20
+	title = flavor_ancardia.20.t
+	desc = flavor_ancradia.20.d
+	fire_only_once = yes
+	trigger = {
+		always = no
+		OR = {
+			AND = {
+				has_opinion = {
+					who = A35
+					value = 150
+				}
+				has_guaranteed = A35
+				num_of_units_in_province = {
+					who = A81
+					amount = 30
+				}
+			}
+			AND = {
+				NOT = { exists = A35}
+				owns_core_province = 271
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.20.a"
+		trigger = { 
+				NOT = { exists = A35}
+		}
+		release = A35
+		vassalize = A35
+		add_country_modifier = {
+			name = ancardia_konwell_boni_full
+			duration = -1
+		}
+	}
+	option = {
+		name = "flavor_ancardia.20.b"
+		trigger = { 
+			exists = A35
+		}
+		vassalize = A35
+		add_country_modifier = {
+			name = ancardia_konwell_boni_full
+			duration = -1
+		}
+	}
+}
+
+#Annex Konwell
+
+country_event = {
+	id = flavor_ancardia.21
+	title = flavor_ancardia.21.t
+	desc = flavor_ancradia.21.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_konwell_boni_full
+		NOT = { exists = A35}
+	}
+	option = {
+		name = "flavor_ancardia.21.a"
+		add_country_modifier = {
+			name = ancardia_konwell_boni_annexed
+			duration = -1
+		}
+		remove_country_modifier = ancardia_konwell_boni_full
+	}
+}
+
+#Restore Konwell as Vassal
+
+country_event = {
+	id = flavor_ancardia.22
+	title = flavor_ancardia.22.t
+	desc = flavor_ancradia.22.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_konwell_boni_annexed
+		exists = A35
+		A35 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.22.a"
+		add_country_modifier = {
+			name = ancardia_konwell_boni_full
+			duration = -1
+		}
+		remove_country_modifier = ancardia_konwell_boni_annexed
+	}
+}
+
+#Telgier
+country_event = {
+	id = flavor_ancardia.23
+	title = flavor_ancardia.23.t
+	desc = flavor_ancradia.23.d
+	fire_only_once = yes
+	trigger = {
+		always = no
+		OR = {
+			AND = {
+				alliance_with = A62
+				has_guaranteed = A62
+				calc_true_if = {
+					any_owned_province = {
+						AND = {
+							OR = {
+								trade_goods = iron
+								trade_goods = copper
+							}
+							base_production = 10
+							has_building = weapons
+						}
+					}
+					amount = 3
+				}
+			}
+			AND = {
+				NOT = { exists = A62}
+				owns_core_province = 911
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.23.a"
+		trigger = { 
+				NOT = { exists = A62}
+		}
+		release = A62
+		vassalize = A62
+		add_country_modifier = {
+			name = ancardia_telgier_boni_full
+			duration = -1
+		}
+	}
+	option = {
+		name = "flavor_ancardia.23.b"
+		trigger = { 
+			exists = A62
+		}
+		vassalize = A62
+		add_country_modifier = {
+			name = ancardia_telgier_boni_full
+			duration = -1
+		}
+	}
+}
+
+#Annex Telgier
+
+country_event = {
+	id = flavor_ancardia.24
+	title = flavor_ancardia.24.t
+	desc = flavor_ancradia.24.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_telgier_boni_full
+		NOT = { exists = A62}
+	}
+	option = {
+		name = "flavor_ancardia.24.a"
+		add_country_modifier = {
+			name = ancardia_telgier_boni_annexed
+			duration = -1
+		}
+		remove_country_modifier = ancardia_telgier_boni_full
+	}
+}
+
+#Restore Telgier as Vassal
+
+country_event = {
+	id = flavor_ancardia.25
+	title = flavor_ancardia.25.t
+	desc = flavor_ancradia.25.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_telgier_boni_annexed
+		exists = A62
+		A62 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.25.a"
+		add_country_modifier = {
+			name = ancardia_telgier_boni_full
+			duration = -1
+		}
+		remove_country_modifier = ancardia_telgier_boni_annexed
+	}
+}
+
+#Damescrown
+country_event = {
+	id = flavor_ancardia.26
+	title = flavor_ancardia.26.t
+	desc = flavor_ancradia.26.d
+	fire_only_once = yes
+	trigger = {
+		always = no
+		OR = {
+			AND = {
+				has_opinion = {
+					who = A25
+					value = 190
+				}
+				has_guaranteed = A25
+				num_of_units_in_province = {
+					who = A81
+					amount = 30
+				}
+				num_of_trade_embargos = 5
+			}
+			AND = {
+				NOT = { exists = A25}
+				owns_core_province = 234
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.26.a"
+		trigger = { 
+				NOT = { exists = A25}
+		}
+		release = A25
+		vassalize = A25
+		add_country_modifier = {
+			name = ancardia_damescrown_boni_full
+			duration = -1
+		}
+	}
+	option = {
+		name = "flavor_ancardia.26.b"
+		trigger = { 
+			exists = A25
+		}
+		vassalize = A25
+		add_country_modifier = {
+			name = ancardia_damescrown_boni_full
+			duration = -1
+		}
+	}
+}
+
+#Annex Damescrown
+
+country_event = {
+	id = flavor_ancardia.27
+	title = flavor_ancardia.27.t
+	desc = flavor_ancradia.27.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_damescrown_boni_full
+		NOT = { exists = A25}
+	}
+	option = {
+		name = "flavor_ancardia.27.a"
+		add_country_modifier = {
+			name = ancardia_damescrown_boni_annexed
+			duration = -1
+		}
+		remove_country_modifier = ancardia_damescrown_boni_full
+	}
+}
+
+#Restore Damescrown as Vassal
+
+country_event = {
+	id = flavor_ancardia.28
+	title = flavor_ancardia.28.t
+	desc = flavor_ancradia.28.d
+
+	trigger = {
+		always = no
+		has_country_modifier = ancardia_damescrown_boni_annexed
+		exists = A25
+		A25 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.28.a"
+		add_country_modifier = {
+			name = ancardia_damescrown_boni_full
+			duration = -1
+		}
+		remove_country_modifier = ancardia_damescrown_boni_annexed
+	}
+}
+
+#Full Bonus
+
+country_event = {
+	id = flavor_ancardia.29
+	title = flavor_ancardia.29.t
+	desc = flavor_ancradia.29.d
+	trigger = {
+		always = no
+		A73 = {
+			is_subject_of = ROOT
+		}
+		A81 = {
+			is_subject_of = ROOT
+		}
+		A35 = {
+			is_subject_of = ROOT
+		}
+		A62 = {
+			is_subject_of = ROOT
+		}
+		A25 = {
+			is_subject_of = ROOT
+		}
+	}
+	option = {
+		name = "flavor_ancardia.29.a"
+		add_country_modifier = {
+			name = pool_of_knowledge
+			duration = -1
+		}
+		every_subject_country = {
+			add_country_modifier = {
+				name = pool_of_knowledge
+				duration = -1
+			}
+		}
+		remove_country_modifier = ancardia_damescrown_boni_full
+		remove_country_modifier = ancardia_giberd_boni_full
+		remove_country_modifier = ancardia_silverforge_boni_full
+		remove_country_modifier = ancardia_konwell_boni_full
+		remove_country_modifier = ancardia_telgier_boni_full
+	}
+}
+
+#Annexed Vassal
+
+country_event = {
+	id = flavor_ancardia.30
+	title = flavor_ancardia.30.t
+	desc = flavor_ancradia.30.d
+
+	trigger = {
+		always = no
+		has_country_modifier = pool_of_knowledge
+		OR = {
+			NOT = {
+				A73 = {
+					vassal_of = ROOT
+				}
+			}
+			NOT = {
+				A81 = {
+					vassal_of = ROOT
+				}
+			}
+			NOT = {
+				A35 = {
+					vassal_of = ROOT
+				}
+			}
+			NOT = {
+				A62 = {
+					vassal_of = ROOT
+				}
+			}
+			NOT = {
+				A25 = {
+					vassal_of = ROOT
+				}
+			}
+		}
+	}
+	option = {
+		name = "flavor_ancardia.30.a"
+		remove_country_modifier = pool_of_knowledge
+		every_subject_country = {
+			remove_country_modifier = pool_of_knowledge
+		}
+	}
+}

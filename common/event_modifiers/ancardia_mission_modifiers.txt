@@ -1,0 +1,113 @@
+ancardia_military_adminstration = {
+	local_governing_cost = -0.5
+	local_autonomy = -0.05
+	local_manpower_modifier = 0.1
+	supply_limit_modifier = 0.33
+	local_defensiveness = 0.1
+}
+
+ancardia_officier_corp = {
+	free_leader_pool = 1
+}
+
+ancardia_library_of_victories = {
+	free_leader_pool = 1
+	army_tradition = 0.5
+}
+
+ancardia_school_of_war = {
+	free_leader_pool = 1
+	army_tradition = 0.5
+	leader_land_fire = 1
+}
+
+ancardia_academy_of_war = {
+	free_leader_pool = 1
+	army_tradition = 0.5
+	leader_land_fire = 1
+	global_supply_limit_modifier = 0.1
+	reinforce_speed = 0.1
+	leader_cost = 0.1
+}
+
+ancardia_escanni_academy_of_war = {
+	free_leader_pool = 1
+	army_tradition = 0.5
+	leader_land_fire = 1
+	leader_siege = 1
+	global_supply_limit_modifier = 0.1
+	reinforce_speed = 0.1
+	yearly_army_professionalism = 0.2
+	leader_cost = 0.2
+}
+
+#Protectorate Boni
+
+ancardia_silverforge_boni_full = {
+	build_cost = -0.1
+	defensiveness = 0.2
+	diplomatic_upkeep = 1
+}
+
+ancardia_silverforge_boni_annexed = {
+	build_cost = -0.05
+	defensiveness = 0.1
+}
+
+ancardia_giberd_boni_full = {
+	backrow_artillery_damage = 0.1
+	#Artificer Cap mission_reward_artifice_points_2
+	diplomatic_upkeep = 1
+}
+
+ancardia_giberd_boni_annexed = {
+	backrow_artillery_damage = 0.1
+}
+
+ancardia_konwell_boni_full = {
+	technology_cost = -0.05
+	idea_cost = -0.05
+	diplomatic_upkeep = 1
+}
+
+ancardia_konwell_boni_annexed = {
+	technology_cost = -0.025
+	idea_cost = -0.025
+}
+
+ancardia_telgier_boni_full = {
+	global_regiment_cost = -0.1
+	infantry_power = 0.1
+	diplomatic_upkeep = 1
+}
+
+ancardia_telgier_boni_annexed = {
+	global_regiment_cost = -0.05
+	infantry_power = 0.05
+}
+
+ancardia_damescrown_boni_full = {
+	trade_efficiency = 0.1
+	tax_income = 24
+	diplomatic_upkeep = 1
+}
+
+ancardia_damescrown_boni_annexed = {
+	trade_efficiency = 0.05
+	tax_income = 12
+}
+
+pool_of_knowledge = {
+	build_cost = -0.1
+	defensiveness = 0.2
+	backrow_artillery_damage = 0.1
+	#Artificier Capacity 2
+	technology_cost = -0.05
+	idea_cost = -0.05
+	global_regiment_cost = -0.1
+	infantry_power = 0.1
+	trade_efficiency = 0.1
+	tax_income = 24
+	fire_damage = 0.1
+	diplomatic_upkeep = 5
+}
